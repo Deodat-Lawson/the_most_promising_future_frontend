@@ -70,6 +70,7 @@ function Register() {
 
             async function SignUp() {
                 try {
+                    console.log("sending request to 3.22.143.86:8000" );
                     const response = await Axios.post('http://3.22.143.86:8000/user/register/', {
                         username: state.usernameValue,
                         email: state.emailValue,
