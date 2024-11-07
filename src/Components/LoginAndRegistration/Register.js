@@ -70,7 +70,7 @@ function Register() {
 
             async function SignUp() {
                 try {
-                    const response = await Axios.post('http://localhost:8000/user/register/', {
+                    const response = await Axios.post('http://3.22.143.86:8000/user/register/', {
                         username: state.usernameValue,
                         email: state.emailValue,
                         password: state.passwordValue,

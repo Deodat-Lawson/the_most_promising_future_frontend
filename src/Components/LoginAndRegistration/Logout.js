@@ -41,7 +41,7 @@ function Logout() {
 
             async function Logout() {
                 try {
-                    const response = await Axios.post('http://localhost:8000/user/logout/', {},
+                    const response = await Axios.post('http://3.22.143.86:8000/user/logout/', {},
                         { cancelToken: source.token }
                     );
                     console.log(response.data);

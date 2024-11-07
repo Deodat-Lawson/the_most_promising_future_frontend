@@ -85,7 +85,7 @@ function UniAppPlanningForm() {
         setStep(step - 1);
     };
 
-    const endpoint = 'http://127.0.0.1:8000/gpt/';
+    const endpoint = 'http://3.22.143.86:8000/gpt/';
 
     const submitForm = async () => {
         setLoading(true);
