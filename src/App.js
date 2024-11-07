@@ -11,6 +11,9 @@ import UniAppPlanningForm from './Components/UniversityAppPlanning/UniAppPlannin
 import Registration from './Components/LoginAndRegistration/Register';
 import Login from './Components/LoginAndRegistration/Login';
 import Home from './Components/Home';
+import Services from './Components/Services';
+import About from './Components/About';
+// import logo from './Assets/logo2.png';
 
 function App() {
     return (
@@ -19,10 +22,6 @@ function App() {
         <div className="App">
             {/*<header className="App-header">*/}
             {/*    <img src={logo} className="App-logo" alt="logo" />*/}
-            {/*    <p>Edit <code>src/App.js</code> and save to reload.</p>*/}
-            {/*    <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">*/}
-            {/*        Learn React*/}
-            {/*    </a>*/}
             {/*</header>*/}
 
                     <Routes>
@@ -34,6 +33,8 @@ function App() {
                         <Route path="/planning/life/form" element={<LifePlanningForm />} />
                         <Route path="/universityApp/" element={<UniAppPlanning />} />
                         <Route path="/universityApp/form" element={<UniAppPlanningForm />} />
+                        <Route path="/services" element={<Services />} />
+                        <Route path="/about" element={<About />} />
                     </Routes>
         </div>
         </BrowserRouter>

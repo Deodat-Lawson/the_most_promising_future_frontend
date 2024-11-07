@@ -7,12 +7,15 @@ body {
 }
 
 form {
-    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30rem;
     margin: auto;
-    padding: 40px;
     border-radius: 8px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px; /* Add padding for better spacing */
 }
 
 /* Header styling */
@@ -29,12 +32,6 @@ form img {
     margin: 0 auto 20px;
 }
 
-/* Input styling */
-.form-group {
-    margin-bottom: 16px;
-}
-
-
 /* Register button styling */
 form button[type="submit"] {
     width: 100%;
@@ -43,7 +40,6 @@ form button[type="submit"] {
     background-color: #007bff;
     color: #ffffff;
     border: none;
-    border-radius: 6px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -62,22 +58,30 @@ form button[type="submit"]:hover {
     }
 }
 
+input[type=email], select {
+    border: transparent;
+    background-color: transparent;
+}
 
-.registration_text_class{
+input[type=email]:focus, select:focus {
+    border-color: #4da6ff; /* Change border color on focus */
+}
+
+.registration_text_class {
     width: 100%;
     height: auto;
     padding: 14px;
-    margin-top: 20px;
+    margin-top: 10px; /* Reduced margin */
     color: #ffffff;
     border: none;
-    border-radius: 8px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
+    border-radius: 0; /* Removed rounded corners */
 }
 
-.registration_container{
+.registration_container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,4 +90,19 @@ form button[type="submit"]:hover {
     color: white;
     text-align: center;
     background-color: #007bff;
+}
+
+.page-container {
+    max-width: 30%;
+    max-height: 30%;
+    margin: 25rem auto;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.form-group {
+    width: 100%;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 10px; /* Adjust this value as needed */
 }

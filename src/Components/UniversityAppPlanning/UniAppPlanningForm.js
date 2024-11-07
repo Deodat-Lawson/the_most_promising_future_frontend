@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './UniAppPlanningForm.css';
 import axios from 'axios';
 import {Country, State} from 'country-state-city';
+import Navbar from "../Navbar";
+import HomeBackground from "../../Assets/HomeBackground.mp4";
 
 
 function UniAppPlanningForm() {
@@ -120,10 +122,38 @@ function UniAppPlanningForm() {
 
     return (
 
-        <div>
-            <ProgBar currentStep={step} totalSteps={7}/>
+        <div className="video-background">
+            <Navbar/>
 
-            <div className="form-container">
+
+            <div className="video-container">
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="background-video"
+                >
+                    <source
+                        src={HomeBackground}
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                </video>
+
+                <div className="video-overlay"/>
+            </div>
+
+            <div  style={{
+                width: "65%", margin: "0 auto", paddingTop: '8rem'
+            }}>
+
+                <ProgBar currentStep={step} totalSteps={7}/>
+            </div>
+
+
+            <div className="form-container" >
+
                 <h2>Personal and Academic Background</h2>
 
                 {step === 1 && (
@@ -323,7 +353,7 @@ function UniAppPlanningForm() {
                             <label>Do you require financial aid?</label>
                             <select id="financial-aid" value={formData.requireFinancialAidScale} onChange={handleChange}
                                     name="requireFinancialAidScale">
-                                <option value={true} >Yes</option>
+                                <option value={true}>Yes</option>
                                 <option value={false}>No</option>
                             </select>
                         </div>
@@ -380,7 +410,7 @@ function UniAppPlanningForm() {
                 )}
 
                 <div className="buttons">
-                    {(step > 1 && step < 6) &&(
+                    {(step > 1 && step < 6) && (
                         <button onClick={prevStep} style={{marginRight: '10px'}}>
                             Previous
                         </button>
@@ -393,7 +423,7 @@ function UniAppPlanningForm() {
                         <button onClick={submitForm}>
                             Submit
                         </button>
-                    ): null}
+                    ) : null}
                 </div>
 
                 <div className="snowflakes"></div>

@@ -7,7 +7,7 @@ import {useUser} from "../context/userContext";
 import Navbar from "../Navbar";
 import HomeBackground from "../../Assets/HomeBackground.mp4";
 
-function Login() {
+function Logout() {
     const navigate = useNavigate();
     const { setUser } = useUser();
 
@@ -209,4 +209,4 @@ function Login() {
 
 }
 
-export default Login;
+export default Logout;
