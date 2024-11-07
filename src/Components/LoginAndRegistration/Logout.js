@@ -1,10 +1,10 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Axios from "axios";
-import {useNavigate} from 'react-router-dom';
-import {Grid, Typography, TextField, Button, AppBar} from "@mui/material";
-import {useImmerReducer} from 'use-immer';
-import {useUser} from "../context/userContext";
+import { useNavigate } from 'react-router-dom';
+import { useImmerReducer } from 'use-immer';
+import { useUser } from "../context/userContext";
 import Navbar from "../Navbar";
+import { LogOut, Home } from 'lucide-react';
 import HomeBackground from "../../Assets/HomeBackground.mp4";
 
 function Logout() {
@@ -12,28 +12,16 @@ function Logout() {
     const { setUser } = useUser();
 
     const initialState = {
-        usernameValue: '',
-        passwordValue: '',
         sendRequest: 0,
-        token: '',
-        errorMessage: '' // New state property for error message
-    }
+        errorMessage: ''
+    };
 
     function ReducerFunction(draft, action) {
         switch (action.type) {
-            case "catchUsernameChange":
-                draft.usernameValue = action.usernameChosen;
-                break;
-            case "catchPasswordChange":
-                draft.passwordValue = action.passwordChosen;
-                break;
             case "changeSendRequest":
                 draft.sendRequest = draft.sendRequest + 1;
                 break;
-            case 'catchToken':
-                draft.token = action.tokenValue;
-                break;
-            case 'setErrorMessage': // New case for setting error message
+            case 'setErrorMessage':
                 draft.errorMessage = action.errorMessage;
                 break;
             default:
@@ -43,60 +31,47 @@ function Logout() {
 
     const [state, dispatch] = useImmerReducer(ReducerFunction, initialState);
 
-    function FormSubmit(e) {
-        e.preventDefault();
-        console.log("submitted form");
-        dispatch({type: 'changeSendRequest'});
+    function FormSubmit() {
+        dispatch({ type: 'changeSendRequest' });
     }
 
     useEffect(() => {
         if (state.sendRequest) {
             const source = Axios.CancelToken.source();
 
-            async function SignIn() {
+            async function Logout() {
                 try {
-                    const response = await Axios.post('http://localhost:8000/user/login/', {
-                        username: state.usernameValue,
-                        password: state.passwordValue,
-                    }, {cancelToken: source.token});
-                    console.log(response.data.username);
-                    setUser(response);
+                    const response = await Axios.post('http://localhost:8000/user/logout/', {},
+                        { cancelToken: source.token }
+                    );
+                    console.log(response.data);
+                    setUser(null);
                     navigate('/');
                 } catch (error) {
                     console.log(error);
-                    dispatch({ type: 'setErrorMessage', errorMessage: 'Authentication failed. Please try again.' });
+                    dispatch({
+                        type: 'setErrorMessage',
+                        errorMessage: 'Logout failed. Please try again.'
+                    });
                 }
             }
 
-            SignIn();
+            Logout();
             return () => {
                 source.cancel();
             }
         }
-    }, [setUser, dispatch, navigate, state.passwordValue, state.sendRequest, state.usernameValue]);
-
-
-    //get user info
-    // useEffect(() => {
-    //     async function getUserInfo() {
-    //         try {
-    //             const response = await Axios.get('http://localhost:8000/user/user/', {
-    //                 headers: {
-    //                     Authorization: `Token ${localStorage.getItem('token')}`
-    //                 }
-    //             });
-    //             console.log(response);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    //
-    //     getUserInfo();
-    // }, [state.token]);
-
+    }, [setUser, dispatch, navigate, state.sendRequest]);
 
     return (
-        <div>
+        <div style={{
+            minHeight: '100vh',
+            background: 'transparent',
+            position: 'relative',
+            overflow: 'hidden'
+        }}>
+            {/* Animated Background */}
+
             <div className="video-container">
                 <video
                     autoPlay
@@ -114,99 +89,104 @@ function Logout() {
                 <div className="video-overlay"/>
             </div>
 
-            <div className="page-container">
-                <Navbar/>
-                <AppBar position="static">
-                    <Typography variant="h6">
-                        Login
-                    </Typography>
-                </AppBar>
-                <Grid container fullWidth={true} justifyContent="center" alignItems="center"
-                      className="registration_container">
-                    <Grid item sx={{marginBottom:'20px'}}>
+            <Navbar/>
 
-                        <h1>Login</h1>
+            <div style={{
+                position: 'relative',
+                zIndex: 1,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: 'calc(100vh - 64px)', // Adjust based on navbar height
+                padding: '20px'
+            }}>
+                <div style={{
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    backdropFilter: 'blur(10px)',
+                    padding: '40px',
+                    borderRadius: '20px',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                    textAlign: 'center',
+                    maxWidth: '400px',
+                    width: '100%',
+                    animation: 'fadeIn 0.5s ease-out'
+                }}>
+                    <h1 style={{
+                        color: 'white',
+                        fontSize: '28px',
+                        marginBottom: '24px'
+                    }}>
+                        Logout Confirmation
+                    </h1>
 
-                        <form onSubmit={FormSubmit}>
-                            <div className="form-group">
-                                <TextField
-                                    className="registration_text_class"
-                                    fullWidth={true}
-                                    label="Username"
-                                    variant="outlined"
-                                    type="registration_text"
-                                    value={state.usernameValue}
-                                    error={!!state.usernameError}
-                                    helperText={state.usernameError}
-                                    sx={{
-                                        padding: 0,
-                                        margin: 0,
-                                        '& .MuiInputBase-root': {
-                                            height: '50px',
-                                        },
+                    {state.errorMessage && (
+                        <div style={{
+                            color: '#ff4d4f',
+                            background: 'rgba(255, 77, 79, 0.1)',
+                            padding: '12px',
+                            borderRadius: '8px',
+                            marginBottom: '20px'
+                        }}>
+                            {state.errorMessage}
+                        </div>
+                    )}
 
-                                    }}
-                                    InputLabelProps={{
-                                        style: { fontSize: '20px', paddingLeft: '8px', paddingTop: '5px'}  // Adjust font size and padding if needed
-                                    }}
-                                    onChange={(e) => dispatch({
-                                        type: 'catchUsernameChange',
-                                        usernameChosen: e.target.value
-                                    })}
-                                />
-                            </div>
+                    <button
+                        onClick={FormSubmit}
+                        style={{
+                            backgroundColor: 'white',
+                            color: '#2563eb',
+                            padding: '12px 32px',
+                            border: 'none',
+                            borderRadius: '8px',
+                            fontSize: '16px',
+                            fontWeight: 'bold',
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            transition: 'all 0.3s ease',
+                            marginBottom: '24px'
+                        }}
+                        onMouseOver={e => {
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.2)';
+                        }}
+                        onMouseOut={e => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <LogOut size={20}/> Logout
+                    </button>
 
-                            <div className="form-group">
-                                <TextField
-                                    className="registration_text_class"
-                                    label="Password"
-                                    variant="outlined"
-                                    type="password"
-                                    value={state.passwordValue}
-                                    error={!!state.passwordError}
-                                    helperText={state.passwordError}
-                                    sx={{
-                                        padding: 0,
-                                        margin: 0,
-                                        '& .MuiInputBase-root': {
-                                            height: '50px',
-                                        },
-
-                                    }}
-                                    InputLabelProps={{
-                                        style: { fontSize: '20px', paddingLeft: '8px', paddingTop: '5px'}  // Adjust font size and padding if needed
-                                    }}
-                                    onChange={(e) => dispatch({
-                                        type: 'catchPasswordChange',
-                                        passwordChosen: e.target.value
-                                    })}
-                                />
-                            </div>
-
-                            {state.errorMessage && (
-                                <Typography color="error" variant="body2">
-                                    {state.errorMessage}
-                                </Typography>
-                            )}
-
-                            <Button type="submit" variant="contained" color="primary">Login</Button>
-
-                            <Grid item container justifyContent="center" style={{marginTop: '1rem'}}>
-                                <Typography variant='small' sx={{
-                                    color: 'black',
-                                }}>Do not have an account? <span onClick={() => navigate('/register')} style={{
-                                    cursor: 'pointer',
-                                    color: "#0288D1"
-                                }}>SIGN UP</span> </Typography>
-                            </Grid>
-
-                        </form>
-                    </Grid>
-                </Grid>
+                    <div style={{
+                        color: 'rgba(255, 255, 255, 0.9)',
+                        fontSize: '14px'
+                    }}>
+                        Mis-clicked? {' '}
+                        <button
+                            onClick={() => navigate('/')}
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                color: 'white',
+                                textDecoration: 'underline',
+                                cursor: 'pointer',
+                                padding: '4px 8px',
+                                fontSize: '14px',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '4px'
+                            }}
+                        >
+                            <Home size={16}/> Return Home
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     );
-
 }
 
 export default Logout;

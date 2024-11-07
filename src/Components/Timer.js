@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useUser } from "./context/userContext";
 import Navbar from "./Navbar";
-import { Button, Typography, Container, Box } from "@mui/material";
+import { Button, Typography, Container} from "@mui/material";
 import { Play, Pause, Clock } from 'lucide-react';
 
 const Timer = ({ workDuration = 25, breakDuration = 5 }) => {

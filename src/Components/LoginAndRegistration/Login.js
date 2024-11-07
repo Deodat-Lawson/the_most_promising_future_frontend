@@ -76,23 +76,6 @@ function Login() {
     }, [setUser, dispatch, navigate, state.passwordValue, state.sendRequest, state.usernameValue]);
 
 
-    //get user info
-    // useEffect(() => {
-    //     async function getUserInfo() {
-    //         try {
-    //             const response = await Axios.get('http://localhost:8000/user/user/', {
-    //                 headers: {
-    //                     Authorization: `Token ${localStorage.getItem('token')}`
-    //                 }
-    //             });
-    //             console.log(response);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    //
-    //     getUserInfo();
-    // }, [state.token]);
 
 
     return (

@@ -1,59 +1,91 @@
-import React from 'react';
-// import Snowfall from 'react-snowfall';
-import './UniAppPlanning.css';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ArrowRight, GraduationCap, Star } from 'lucide-react';
+import './UniAppPlanning.css';
 import HomeBackground from "../../Assets/HomeBackground.mp4";
 
-
 const UniAppPlanning = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const [isVisible, setIsVisible] = useState(false);
 
-  const handleFormPage = () => {
-    navigate('/universityApp/form');
-  };
-  return (
-      <div className="app-container">
+    useEffect(() => {
+        setIsVisible(true);
+    }, []);
 
-          <div className="video-container">
-              <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="background-video"
-              >
-                  <source
-                      src={HomeBackground}
-                      type="video/mp4"
-                  />
-                  Your browser does not support the video tag.
-              </video>
+    const handleFormPage = () => {
+        navigate('/universityApp/form');
+    };
 
-              <div className="video-overlay"/>
-          </div>
+    return (
+        <div className="app-container">
+            {/* Background Video */}
+            <div className="video-container">
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="background-video"
+                >
+                    <source
+                        src={HomeBackground}
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                </video>
+                <div className="video-overlay"/>
+            </div>
 
-          {/*/!* Snowfall effect *!/*/}
-          {/*<Snowfall snowflakeCount={200} style={{position: 'fixed', width: '100%', height: '100%'}}/>*/}
+            {/* Animated Background Elements */}
+            <div className="floating-elements">
+                {[...Array(5)].map((_, index) => (
+                    <div
+                        key={index}
+                        className="floating-icon"
+                        style={{
+                            animationDelay: `${index * 0.5}s`,
+                            left: `${index * 20}%`
+                        }}
+                    >
+                        {index % 2 === 0 ? <GraduationCap size={24} /> : <Star size={24} />}
+                    </div>
+                ))}
+            </div>
 
-          {/* Main content */}
-          <div className="content">
-              <h1 className="animated-text">It's not too late yet to achieve your dreams</h1>
-              <div className='snow-button'
-                   whileHover={{scale: 1.1}}
-                   whileTap={{scale: 0.9}}
-                   onClick={handleFormPage}
-                   initial={{opacity: 0, y: 50}}
-                   animate={{opacity: 1, y: 0}}
-                   transition={{duration: 1, delay: 5}}
-                   style={{marginBottom: '20px'}}
-              >
-                  How does our game Work
-              </div>
+            {/* Main Content */}
+            <div className={`content ${isVisible ? 'visible' : ''}`}>
+                <h1 className="main-title">
+                    NORA Quick Guide
+                </h1>
 
+                <div className="features-grid">
+                    <div className="feature-card">
+                        <GraduationCap size={32} />
+                        <h3 style={{color:'white'}}>Personalized Guidance</h3>
+                        <p>Get tailored university recommendations based on your profile</p>
+                    </div>
+                    <div className="feature-card">
+                        <Star size={32} />
+                        <h3 style={{color:'white'}}>Expert Insights</h3>
+                        <p>Learn from comprehensive analysis of your academic strengths</p>
+                    </div>
+                </div>
 
-          </div>
-      </div>
-  );
+                <button
+                    className="start-button"
+                    onClick={handleFormPage}
+                    aria-label="Start Application Process"
+                >
+                    <span>Try Out Now</span>
+                    <ArrowRight size={20} />
+                </button>
+
+                <div className="info-text" style={{color:'white'}}>
+                    Begin your journey to academic success today
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default UniAppPlanning;

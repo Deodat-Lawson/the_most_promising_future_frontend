@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, BookOpen, School, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import './Services.css';
 import Navbar from "./Navbar";
 import HomeBackground from "../Assets/HomeBackground.mp4";
@@ -7,7 +7,17 @@ import HomeBackground from "../Assets/HomeBackground.mp4";
 const Services = () => {
     const services = [
         {
-            title: "Pomodoro Timer",
+            title: "Quick Guide",
+            description: "Get an idea of where you are at in the process of application and what you need to do next.",
+            features: [
+                "University Recommendation",
+                "Current Application Overview",
+                "General Overview",
+            ],
+            link: "/universityApp/"
+        },
+        {
+            title: "Pomodoro Timer (Beta)",
             description: "Improve your productivity and focus with the Pomodoro technique. Our timer helps you break down work into intervals, allowing you to work efficiently and take regular breaks.",
             features: [
                 "Customizable work intervals",
@@ -28,7 +38,7 @@ const Services = () => {
                 "Location and culture matching",
                 "Budget and financial aid guidance"
             ],
-            link: "/university-matching"
+            link: "/featureUnavailable"
         },
         {
             title: "Application Guidance",
@@ -40,7 +50,7 @@ const Services = () => {
                 "Portfolio development",
                 "Interview preparation"
             ],
-            link: "/application-guidance"
+            link: "/featureUnavailable"
         },
         {
             title: "Career Planning",
@@ -52,7 +62,7 @@ const Services = () => {
                 "Internship planning",
                 "Professional development roadmap"
             ],
-            link: "/career-planning"
+            link: "/featureUnavailable"
         }
     ];
 
@@ -83,7 +93,7 @@ const Services = () => {
 
 
                 <div className="services-header">
-                    <h1>Our Services</h1>
+                    <h1 style={{color:'white'}}>Our Services</h1>
                     <p>Comprehensive support for your academic journey, from university selection to career
                         planning.</p>
                 </div>

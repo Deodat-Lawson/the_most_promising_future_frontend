@@ -3,10 +3,12 @@ import {Search, BookOpen, School, ArrowRight, Clock} from 'lucide-react';
 import './Home.css';
 import Navbar from "./Navbar";
 import HomeBackground from '../Assets/HomeBackground.mp4';
-import {useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import logo from '../Assets/logo2.png';
+import {useUser} from "./context/userContext";
 
 const Home = () => {
+    const {user} = useUser();
     const navigate = useNavigate();
     const services = [
         {
@@ -98,8 +100,15 @@ const Home = () => {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '8px'
+
+
+
                     }}
-                            onClick={() => navigate('/register')}>
+                            onClick={user && user.data.username ? (
+                                ()=> navigate('/services')
+                            ) : (
+                                ()=> navigate('/register')
+                            )}>
                         Get Started
                         <ArrowRight/>
                     </button>
