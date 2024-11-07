@@ -1,0 +1,89 @@
+/* src/Components/LoginAndRegistration/Register.css */
+
+/* General container styling */
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+}
+
+form {
+    width: 500px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header styling */
+form h1 {
+    text-align: center;
+    color: #333333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+form img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* Input styling */
+.form-group {
+    margin-bottom: 16px;
+}
+
+
+/* Register button styling */
+form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive layout for mobile devices */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+
+.registration_text_class{
+    width: 100%;
+    height: auto;
+    padding: 14px;
+    margin-top: 20px;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.registration_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    position: relative;
+    color: white;
+    text-align: center;
+    background-color: #007bff;
+}

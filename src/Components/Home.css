@@ -1,0 +1,209 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.video-background {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.video-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.background-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.content-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.content-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Animation for content fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.page-container {
+    min-height: 100%;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.hero-section {
+    padding: 48px 16px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2563eb;
+    margin-bottom: 16px;
+}
+
+.hero-text {
+    font-size: 18px;
+    color: #4b5563;
+    max-width: 100%;
+    margin: 0 auto 32px auto;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #2563eb;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.button-icon {
+    margin-left: 8px;
+}
+
+.services-section {
+    padding: 48px 16px;
+    background-color: #f9fafb;
+}
+
+.services-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2563eb;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.services-grid {
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.service-card {
+    background-color: white;
+    padding: 24px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    width: 24px;
+    height: 24px;
+    color: #2563eb;
+    margin-bottom: 16px;
+}
+
+.service-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
+.service-description {
+    color: #4b5563;
+}
+
+.cta-section {
+    background-color: #2563eb;
+    color: white;
+    padding: 48px 16px;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.cta-text {
+    margin-bottom: 24px;
+}
+
+.button-white {
+    background-color: white;
+    color: #2563eb;
+}
+
+.footer {
+    background-color: #f3f4f6;
+    padding: 24px 16px;
+    text-align: center;
+    color: #4b5563;
+}
