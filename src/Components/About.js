@@ -1,8 +1,9 @@
 import React from 'react';
-import { Book, Briefcase, GraduationCap, Award } from 'lucide-react';
+import { Book, Briefcase, GraduationCap } from 'lucide-react';
 import './About.css';
 import Navbar from "./Navbar";
 import HomeBackground from "../Assets/HomeBackground.mp4";
+import pfp from "../Assets/pfp.jpg";
 
 const About = () => {
 
@@ -11,36 +12,24 @@ const About = () => {
             icon: <GraduationCap size={32} />,
             title: "Education",
             items: [
-                "Master's in Education Counseling - Stanford University",
-                "Bachelor's in Psychology - Harvard University",
-                "Certified College Counselor (CCC)"
+                "Bachelor's of Science in Computer Science - Johns Hopkins University",
             ]
         },
         {
             icon: <Briefcase size={32} />,
             title: "Experience",
             items: [
-                "10+ years as University Admissions Officer",
-                "5 years as Head of College Counseling",
-                "Educational Consultant for International Students"
-            ]
-        },
-        {
-            icon: <Award size={32} />,
-            title: "Achievements",
-            items: [
-                "Helped 1000+ students secure university admissions",
-                "95% success rate in top-choice placements",
-                "Featured in Education Weekly Magazine"
+                "5 years as Software Engineer/Developer",
+                "2 years as IT Manager",
             ]
         },
         {
             icon: <Book size={32} />,
             title: "Specializations",
             items: [
-                "International University Applications",
-                "Scholarship Application Strategy",
-                "Career Path Development"
+                "Full Stack Development",
+                "Frontend and Backend Framework",
+                "Machine Learning/AI/Deep Learning",
             ]
         }
     ];
@@ -77,7 +66,7 @@ const About = () => {
                 <div className="about-hero">
                     <div className="profile-container">
                         <div className="profile-image">
-                            <img src="/api/placeholder/150/150" alt="Timothy Lin"/>
+                            <img src={pfp} alt="Timothy Lin"/>
                         </div>
                         <h1>Timothy Lin</h1>
                         <p className="title">Founder & CEO</p>
@@ -87,18 +76,12 @@ const About = () => {
                 {/* Personal Story Section */}
                 <div className="about-container">
                     <section className="story-section">
-                        <h2>My Story</h2>
+                        <h2>About Me</h2>
                         <p>
-                            My journey in educational consulting began when I witnessed talented students
-                            struggling to navigate the complex university admission process. With over 15 years
-                            of experience in higher education, I've dedicated my career to helping students
-                            unlock their full potential and access the best educational opportunities.
+                            I am a junior studying Computer Science, Applied Math and Statistics, and Finance at Johns Hopkins University. I have passion developing complex algorithms, machine learning projects, and quantitative modeling.
                         </p>
                         <p>
-                            Having served as both a university admissions officer and college counselor,
-                            I understand the admissions process from both sides. This unique perspective
-                            allows me to provide invaluable insights to my students, helping them present
-                            their strongest applications and find their perfect university match.
+                            University Application has long been a tough process to go through. I have been through the process and I understand the stress and anxiety that comes with it. That's why I developed NORA to help students go through the process with ease.
                         </p>
                     </section>
 
@@ -121,25 +104,13 @@ const About = () => {
                         </div>
                     </section>
 
-                    {/* Philosophy Section */}
-                    <section className="philosophy-section">
-                        <h2>My Approach</h2>
-                        <p>
-                            I believe every student has unique potential that deserves to be recognized
-                            and nurtured. My approach combines personalized attention with data-driven
-                            insights to help students make informed decisions about their academic future.
-                            I work closely with each student to understand their aspirations, strengths,
-                            and challenges, creating tailored strategies that lead to successful outcomes.
-                        </p>
-                    </section>
 
                     {/* Contact Section */}
                     <section className="contact-section">
                         <h2 style={{color: "white"}}>Let's Connect</h2>
                         <p>
-                            I'm always excited to meet new students and help them on their academic journey.
-                            Whether you're just starting to think about universities or ready to begin the
-                            application process, I'm here to help.
+                            I'm always excited to meet new students and progress together.
+                            If you have any questions or just want to chat, feel free to reach out to me on LinkedIn.
                         </p>
                         <button
                             className="cta-button"
