@@ -55,7 +55,7 @@ function Login() {
 
             async function SignIn() {
                 try {
-                    const response = await Axios.post('http://3.22.143.86:8000/user/login/', {
+                    const response = await Axios.post('https://api.noraai.org/user/login/', {
                         username: state.usernameValue,
                         password: state.passwordValue,
                     }, {cancelToken: source.token});
