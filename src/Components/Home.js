@@ -5,10 +5,10 @@ import Navbar from "./Navbar";
 import HomeBackground from '../Assets/HomeBackground.mp4';
 import { useNavigate} from "react-router-dom";
 import logo from '../Assets/logo2.png';
-import {useUser} from "./context/userContext";
+// import {useUser} from "./context/userContext";
 
 const Home = () => {
-    const {user} = useUser();
+    // const {user} = useUser();
     const navigate = useNavigate();
     const services = [
         {
