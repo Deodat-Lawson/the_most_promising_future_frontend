@@ -77,6 +77,7 @@ function Register() {
                         password: state.passwordValue,
                         re_password: state.password2Value,
                     }, {cancelToken: source.token});
+
                     console.log(response);
                     navigate('/login');
                 } catch (error) {

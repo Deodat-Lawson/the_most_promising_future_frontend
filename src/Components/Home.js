@@ -78,7 +78,7 @@ const Home = () => {
                         color: '#1a365d',
                         marginBottom: '24px',
                     }}>
-                        New Outlooks, Real Achievements (Beta 1.0.1)
+                        New Outlooks, Real Achievements (Beta 1.0.2)
                     </h1>
                     <p style={{
                         fontSize: '20px',
@@ -104,11 +104,13 @@ const Home = () => {
 
 
                     }}
-                            onClick={user && user.data.username ? (
-                                ()=> navigate('/services')
-                            ) : (
-                                ()=> navigate('/register')
-                            )}>
+                            // onClick={user && user.data.username ? (
+                            //     ()=> navigate('/services')
+                            // ) : (
+                            //     ()=> navigate('/register')
+                            // )}
+                        //
+                        onClick={()=> navigate('/services')}>
                         Get Started
                         <ArrowRight/>
                     </button>

@@ -16,11 +16,14 @@ const Navbar = () => {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li>
-                    {user && user.data.username ? (
-                        <Link to="/services">Services</Link>
-                ) : (
-                    <Link to="/register">Register</Link>
-                )}</li>
+                {/*    {user && user.data.username ? (*/}
+                {/*        <Link to="/services">Services</Link>*/}
+                {/*) : (*/}
+                {/*    <Link to="/register">Register</Link>*/}
+                {/*)}</li>*/}
+
+                    <Link to="/services">Services</Link>
+                </li>
                 <li>
                     {user && user.data.username ? (
                         <Link to="/logout">Logout</Link>
