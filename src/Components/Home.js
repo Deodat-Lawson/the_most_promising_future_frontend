@@ -78,7 +78,7 @@ const Home = () => {
                         color: '#1a365d',
                         marginBottom: '24px',
                     }}>
-                        New Outlooks, Real Achievements (Beta 1.0.0)
+                        New Outlooks, Real Achievements (Beta 1.0.1)
                     </h1>
                     <p style={{
                         fontSize: '20px',
